@@ -30,10 +30,38 @@ nav ul {
 
 nav li {
   margin: 0 10px;
+  position: relative;
 }
 
 nav a {
   font-size: 20px;
+  display: block;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #3f3f3f;
+}
+
+nav a:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+  z-index: -1;
+}
+
+nav a:hover:before {
+  width: 200%;
+  height: 200%;
 }
 
 main {
