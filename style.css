@@ -7,12 +7,15 @@
 body {
   font-family: "richard";
   background-color: #161616;
-  color: #fff;
+  background-image: url("images/skateboard1.jpg");
+  color: #b8c8ff;
+  text-shadow: 4px 4px #000000;
   margin: 0;
 }
 
 a {
-  color: #fff;
+  color: #b8c8ff;
+  text-shadow: 4px 4px #000000;
   text-decoration: none;
 }
 
