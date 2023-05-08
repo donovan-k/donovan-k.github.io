@@ -1,45 +1,93 @@
+/* General Styles */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-
-header {
-  background-color: #333;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #161616;
   color: #fff;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav ul {
-  list-style: none;
   margin: 0;
-  padding: 0;
-  display: flex;
 }
 
-nav ul li {
-  margin-right: 20px;
-}
-
-nav ul li:last-child {
-  margin-right: 0;
-}
-
-nav ul li a {
+a {
   color: #fff;
   text-decoration: none;
 }
 
-main {
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+header {
+  background-color: #2f2f2f;
   padding: 20px;
 }
 
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  font-size: 20px;
+}
+
+main {
+  padding: 40px;
+}
+
 footer {
-  background-color: #333;
-  color: #fff;
+  background-color: #2f2f2f;
   padding: 20px;
   text-align: center;
+}
+
+/* Styles for Beat Samples */
+.beat {
+  background-color: #252525;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.beat h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.beat audio {
+  width: 100%;
+}
+
+.beat p {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* Styles for Skateboard Decks */
+.deck {
+  background-color: #252525;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.deck img {
+  max-width: 100%;
+  max-height: 300px;
+  margin: 10px;
+  box-shadow: 0px 0px 10px #fff;
+  border-radius: 5px;
+}
+
+.deck img:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
