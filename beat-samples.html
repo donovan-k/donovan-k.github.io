@@ -18,12 +18,12 @@
   <main>
     <h2>My Beat Samples</h2>
     <div class="beat">
-      <h3>Beat Sample 1</h3>
-      <audio controls>
-        <source src="https://onedrive.live.com/download?cid=B380E79D4EB0DE71&resid=B380E79D4EB0DE71%21107&authkey=AAx8WbLZvHqxfnQ">
-        Your browser does not support the audio element.
-      </audio>
-      <p>Description of beat sample 1.</p>
+      <h3>Space Wave</h3>
+      <audio id="a1" src="https://onedrive.live.com/download?cid=B380E79D4EB0DE71&resid=B380E79D4EB0DE71%21107&authkey=AAx8WbLZvHqxfnQ" controls>Your browser does not support the audio element.</audio>
+      <div id="canvas-container">
+        <canvas id="canvas"></canvas>
+      </div>
+      <p>Futuristic and chill beat.</p>
     </div>
     <div class="beat">
       <h3>Beat Sample 2</h3>
@@ -31,6 +31,9 @@
         <source src="beat2.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
+      <div id="canvas-container">
+        <canvas id="canvas"></canvas>
+      </div>
       <p>Description of beat sample 2.</p>
     </div>
     <div class="beat">
@@ -45,5 +48,6 @@
   <footer>
     <p>&copy; 2023 Donovan Kitten</p>
   </footer>
+  <script src="beat.js"></script>
 </body>
 </html>
