@@ -94,9 +94,11 @@ footer {
 /* Styles for Beat Samples */
 .beat {
   background-color: #252525;
-  padding: 20px;
+  padding: 40px;
   margin-bottom: 20px;
-  border-radius: 5px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #d4d4d4;
 }
 
 .beat h3 {

@@ -50,7 +50,8 @@ function generateScribble(canvas, canvasContainer) {
   //setInterval(generateScribblePath, 1000);
 }
 
-for (var i = 1; i <= 3; i++) {
+
+for (var i = 1; i <= 5; i++) {
   var index = i.toString();
   const c = document.getElementById('canvas'+index);
   const cc = document.getElementById('canvas-container'+index);
