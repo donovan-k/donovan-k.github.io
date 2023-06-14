@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Processing</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .input-wrapper {
+            margin-bottom: 20px;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        #file-label {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #file-name {
+            margin-left: 10px;
+        }
+
+        #color-input {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        #process-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #result-img {
+            margin-top: 30px;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+  <header>
+    <h1>Dubble Dex Beats and Boards</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="skateboard-decks.html">Skateboard Decks</a></li>
+        <li><a href="beat-samples.html">Beat Samples</a></li>
+        <li><a href="back-remove.html">Image Background Remover</a></li>
+      </ul>
+    </nav>
+  </header>
+    <h1>Image Processing</h1>
+    <div class="input-wrapper">
+        <input type="file" id="file-input">
+        <label for="file-input" id="file-label">Choose Image</label>
+        <span id="file-name"></span>
+    </div>
+    <input type="color" id="color-input" value="#ffffff">
+    <button id="process-button">Process Image</button>
+    <div id="result">
+        <img id="result-img" src="" alt="Processed Image">
+    </div>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+            const fileInput = document.getElementById('file-input');
+            const fileLabel = document.getElementById('file-label');
+            const fileName = document.getElementById('file-name');
+            const colorInput = document.getElementById('color-input');
+            const processButton = document.getElementById('process-button');
+            const resultImg = document.getElementById('result-img');
+
+            fileInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    fileName.textContent = file.name;
+                } else {
+                    fileName.textContent = '';
+                }
+            });
+
+            processButton.addEventListener('click', () => {
+                const file = fileInput.files[0];
+                const targetColor = colorInput.value;
+
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const img = new Image();
+                        img.src = event.target.result;
+                        img.onload = () => {
+                            const canvas = document.createElement('canvas');
+                            const ctx = canvas.getContext('2d');
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+                            ctx.drawImage(img, 0, 0);
+
+                            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                            const data = imageData.data;
+
+                            const rgbTargetColor = hexToRgb(targetColor);
+
+                            for (let i = 0; i < data.length; i += 4) {
+                                const red = data[i];
+                                const green = data[i + 1];
+                                const blue = data[i + 2];
+
+                                if (red === rgbTargetColor.r && green === rgbTargetColor.g && blue === rgbTargetColor.b) {
+                                    data[i + 3] = 0; // Set alpha channel to 0
+                                }
+                            }
+
+                            ctx.putImageData(imageData, 0, 0);
+
+                            const processedImg = new Image();
+                            processedImg.src = canvas.toDataURL('image/png');
+                            resultImg.src = processedImg.src;
+                        };
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            function hexToRgb(hex) {
+                // Remove the leading # if present
+                hex = hex.replace(/^#/, '');
+
+                // Convert the hex value to RGB
+                const bigint = parseInt(hex, 16);
+                const r = (bigint >> 16) & 255;
+                const g = (bigint >> 8) & 255;
+                const b = bigint & 255;
+
+                return { r, g, b };
+            }
+        });
+    </script>
+</body>
+</html>

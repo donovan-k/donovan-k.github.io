@@ -7,7 +7,7 @@
 body {
   font-family: "richard";
   background-color: #161616;
-  background-image: url("images/skateboard1.jpg");
+  background-image: url("images/background.jpg");
   color: #b8c8ff;
   text-shadow: 4px 4px #000000;
   justify-content: center;
@@ -115,18 +115,20 @@ footer {
 
 /* Styles for Skateboard Decks */
 .deck {
-  background-color: #252525;
-  padding: 20px;
+  /* background-color: #252525;
+  padding: 5px;
   margin-bottom: 20px;
   border-radius: 5px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
   justify-content: center;
+  display: flex;
 }
 
 .deck img {
-  max-width: 100%;
-  max-height: 300px;
+  max-width: 80%;
+  min-width: 75%;
+  min-height: 300;
   margin: 10px;
   box-shadow: 0px 0px 10px #fff;
   border-radius: 5px;
