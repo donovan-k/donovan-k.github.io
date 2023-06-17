@@ -1,7 +1,7 @@
 /* General Styles */
 @font-face {
-    font-family: "richard";
-    src: url("Richard\ Samuels.otf");
+  font-family: "richard";
+  src: url("Richard\ Samuels.otf");
 }
 
 body {
@@ -19,7 +19,12 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   justify-content: center;
   text-align: center;
 }
@@ -27,9 +32,11 @@ h1, h2, h3, h4, h5, h6 {
 p {
   text-align: center;
   font-size: large;
-  background-color: rgba(0, 0, 0, 0.5); 
-  border-radius: 10px; /* Set border radius to 10px for rounded corners */
-  padding: 20px; /* Add some padding to the block */
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  /* Set border radius to 10px for rounded corners */
+  padding: 20px;
+  /* Add some padding to the block */
 }
 
 header {
@@ -139,4 +146,21 @@ footer {
 .deck img:hover {
   transform: scale(1.1);
   transition: all 0.3s ease;
+}
+
+.drawing {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.show-popup {
+  display: block !important;
 }

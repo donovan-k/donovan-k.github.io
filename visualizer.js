@@ -1,79 +1,32 @@
-// Create an AudioContext instance
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+import {Wave} from "@foobar404/wave";
+let audioElement = document.querySelector("a1");
+let canvasElement = document.querySelector("canvas1");
+let wave = new Wave(audioElement, canvasElement);
 
-// Create an analyser node
-const analyserMap = new Map();
+// Simple example: add an animation
+wave.addAnimation(new wave.animations.Wave());
 
-// Function to create a visualizer for an audio element
-function createVisualizer(audioElement, canvasElement) {
-  // Get the canvas context
-  const canvasContext = canvasElement.getContext('2d');
+// Intermediate example: add an animation with options
+wave.addAnimation(new wave.animations.Wave({
+    lineWidth: 10,
+    lineColor: "red",
+    count: 20
+}));
 
-  // Create an analyser node for this audio element
-  const analyser = audioContext.createAnalyser();
-  analyser.fftSize = 2048;
+// Expert example: add multiple animations with options
+wave.addAnimation(new wave.animations.Square({
+    count: 50,
+    diamater: 300
+}));
 
-  // Connect the audio element to the analyser node
-  const source = audioContext.createMediaElementSource(audioElement);
-  source.connect(analyser);
-  source.connect(audioContext.destination);
+wave.addAnimation(new wave.animations.Glob({
+    fillColor: {gradient: ["red","blue","green"], rotate: 45},
+    lineWidth: 10,
+    lineColor: "#fff"
+}));
 
-  // Store the analyser in the map for later reference
-  analyserMap.set(audioElement, analyser);
+// The animations will start playing when the provided audio element is played
 
-  // Render the visualizer for this audio element
-  function renderVisualizer() {
-    // Clear the canvas
-    canvasContext.clearRect(0, 0, canvasElement.width, canvasElement.height);
+// 'wave.animations' is an object with all possible animations on it.
 
-    // Get the frequency data
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
-    analyser.getByteFrequencyData(dataArray);
-
-    // Set up the canvas properties
-    const barWidth = canvasElement.width / bufferLength;
-    let x = 0;
-
-    // Render each bar
-    for (let i = 0; i < bufferLength; i++) {
-      const barHeight = (dataArray[i] / 255) * canvasElement.height;
-
-      // Set the fill style and draw the bar
-      canvasContext.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
-      canvasContext.fillRect(x, canvasElement.height - barHeight / 2, barWidth, barHeight / 2);
-
-      // Move to the next position
-      x += barWidth + 1;
-    }
-
-    // Call the next frame
-    requestAnimationFrame(renderVisualizer);
-  }
-
-  // Start rendering the visualizer
-  renderVisualizer();
-}
-
-// Function to open a new window with the visualizer
-function openVisualizerWindow(audioElement) {
-  // Create a new window
-  const visualizerWindow = window.open('', '_blank', 'width=400,height=300');
-
-  // Create a canvas element in the new window
-  const canvasElement = visualizerWindow.document.createElement('canvas');
-  visualizerWindow.document.body.appendChild(canvasElement);
-
-  // Call the visualizer creation function for the audio element and canvas
-  createVisualizer(audioElement, canvasElement);
-}
-
-// Get all the audio elements
-const audioElements = document.querySelectorAll('audio');
-
-// Attach click event listeners to each audio element
-audioElements.forEach((audioElement) => {
-  audioElement.addEventListener('click', () => {
-    openVisualizerWindow(audioElement);
-  });
-});
+// Each animation is a class, so you have to new-up each animation when passed to 'addAnimation'
