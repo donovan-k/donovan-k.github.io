@@ -1,59 +1,58 @@
-function generateScribble(canvas, canvasContainer) {
-  const context = canvas.getContext('2d');
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const audioElements = document.querySelectorAll('audio');
+            const playButtons = document.querySelectorAll('.play-btn');
+            const stopButton = document.getElementById('stop-btn');
+            const shuffleButton = document.getElementById('shuffle-btn');
+            const nextButton = document.getElementById('next-btn');
+            const prevButton = document.getElementById('prev-btn');
 
-  // Set the canvas dimensions to match its container
-  canvas.width = canvasContainer.offsetWidth;
-  canvas.height = canvasContainer.offsetHeight;
+            // Initialize the player with the first audio element
+            let currentPlayer = audioElements[0];
 
-  // Generate a random path with random colors
-  function generateScribblePath() {
-    const points = [];
-    const numPoints = 30;
-    const minDistance = 10;
-    const maxDistance = 50;
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
+            // Play the selected audio element
+            function playAudio(audioElement) {
+                audioElements.forEach((element) => {
+                    if (element !== audioElement) {
+                        element.pause();
+                    }
+                });
+                audioElement.play();
+                currentPlayer = audioElement;
+            }
 
-    // Generate random points
-    for (let i = 0; i < numPoints; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const distance = Math.random() * (maxDistance - minDistance) + minDistance;
-      const x = centerX + Math.cos(angle) * distance;
-      const y = centerY + Math.sin(angle) * distance;
-      points.push({x, y});
-    }
+            // Add event listeners to play/pause buttons
+            playButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const audioElement = button.parentNode.querySelector('audio');
+                    playAudio(audioElement);
+                });
+            });
 
-    // Connect the points with a path
-    context.beginPath();
-    context.moveTo(points[0].x, points[0].y);
-    for (let i = 1; i < numPoints; i++) {
-      const prevPoint = points[i - 1];
-      const currentPoint = points[i];
-      const midPoint = {
-        x: (prevPoint.x + currentPoint.x) / 2,
-        y: (prevPoint.y + currentPoint.y) / 2
-      };
-      context.quadraticCurveTo(prevPoint.x, prevPoint.y, midPoint.x, midPoint.y);
-    }
-    context.quadraticCurveTo(points[numPoints - 1].x, points[numPoints - 1].y, points[0].x, points[0].y);
+            // Add event listener to stop button
+            stopButton.addEventListener('click', () => {
+                audioElements.forEach((element) => {
+                    element.pause();
+                    element.currentTime = 0;
+                });
+            });
 
-    // Set a random color for the path
-    context.strokeStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
-    context.lineWidth = 5;
-    context.lineJoin = 'round';
-    context.lineCap = 'round';
-    context.stroke();
-  }
+            // Add event listener to shuffle button
+            shuffleButton.addEventListener('click', () => {
+                const shuffledAudioElements = Array.from(audioElements).sort(() => Math.random() - 0.5);
+                playAudio(shuffledAudioElements[0]);
+            });
 
-  // Generate the initial scribble
-  generateScribblePath();
-  //setInterval(generateScribblePath, 1000);
-}
+            // Add event listener to next button
+            nextButton.addEventListener('click', () => {
+                const currentIndex = Array.from(audioElements).indexOf(currentPlayer);
+                const nextIndex = (currentIndex + 1) % audioElements.length;
+                playAudio(audioElements[nextIndex]);
+            });
 
-
-for (var i = 1; i <= 6; i++) {
-  var index = i.toString();
-  const c = document.getElementById('canvas'+index);
-  const cc = document.getElementById('canvas-container'+index);
-  generateScribble(c, cc);
-}
+            // Add event listener to previous button
+            prevButton.addEventListener('click', () => {
+                const currentIndex = Array.from(audioElements).indexOf(currentPlayer);
+                const prevIndex = (currentIndex - 1 + audioElements.length) % audioElements.length;
+                playAudio(audioElements[prevIndex]);
+            });
+        });
