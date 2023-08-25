@@ -4,7 +4,6 @@
 <head>
   <title>INSTRUMENT & LOOP SAMPLES</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="beat.js"></script>
 </head>
 
 <body>
@@ -43,7 +42,7 @@
           <td>120</td>
           <td>16</td>
           <td>
-            <audio controls controlsList="nodownload">
+            <audio class="looping-audio" controls controlsList="nodownload">
               <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21189&authkey=!APcwWrtC7bvqWu8"
                 type="audio/mpeg">
               Your browser does not support the audio element.
@@ -58,7 +57,7 @@
           <td>120</td>
           <td>16</td>
           <td>
-            <audio controls controlsList="nodownload">
+            <audio class="looping-audio" controls controlsList="nodownload">
               <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21188&authkey=!ADKJcZQX-SRFDKw"
                 type="audio/mpeg">
               Your browser does not support the audio element.
@@ -73,7 +72,7 @@
           <td>120</td>
           <td>16</td>
           <td>
-            <audio controls controlsList="nodownload">
+            <audio class="looping-audio" controls controlsList="nodownload">
               <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21187&authkey=!ANA5rFvgwpGuVTk"
                 type="audio/mpeg">
               Your browser does not support the audio element.
@@ -83,6 +82,24 @@
         <!-- Add more rows as needed -->
       </tbody>
     </table>
+    <script>
+      // Define a function to encapsulate your code
+      function initializeLoopingAudio() {
+        // Get references to all audio elements with the class 'looping-audio'
+        const audioElements = document.querySelectorAll('.looping-audio');
+
+        // Loop through each audio element and add event listeners
+        audioElements.forEach(audio => {
+          audio.addEventListener('ended', () => {
+            audio.currentTime = 0;
+            audio.play();
+          });
+        });
+      }
+
+      // Call the function when the DOM is ready
+      document.addEventListener('DOMContentLoaded', initializeLoopingAudio);
+    </script>
   </main>
   <footer>
     <p>&copy; 2023 Donovan Kitten</p>
