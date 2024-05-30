@@ -46,17 +46,32 @@ header {
   padding: 20px;
 }
 
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+/* Basic styling for the navigation */
+nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  position: relative;
+  border-radius: 5px;
 }
 
-nav li {
-  margin: 0 10px;
-  position: relative;
+/* Hide the navigation links by default on smaller screens */
+nav ul {
+  display: none;
+  flex-direction: column;
+  background-color: #ffcc00;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: auto;
+  text-align: right;
+  border-radius: 5px;
+}
+
+nav ul li {
+  margin: 0;
 }
 
 nav a {
@@ -73,23 +88,46 @@ nav a:hover {
   background-color: #ffa500;
 }
 
-nav a:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background-color: #000000;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease;
-  z-index: -1;
+/* Styling the hamburger menu */
+.menu-icon {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
 }
 
-nav a:hover:before {
-  width: 200%;
-  height: 200%;
+.menu-icon .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #000;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* Show the navigation links when the checkbox is checked */
+#menu-toggle {
+  display: none;
+}
+
+#menu-toggle:checked + .menu-icon + #nav-list {
+  display: flex;
+}
+
+/* Media query to handle larger screens */
+@media (min-width: 768px) {
+  nav {
+    justify-content: center;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    width: auto;
+  }
+
+  .menu-icon {
+    display: none;
+  }
 }
 
 main {
