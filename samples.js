@@ -41,7 +41,7 @@ function generateSample() {
     const sampleLength = selectedRow.cells[3].innerText;
     const audioElement = selectedRow.cells[4].innerHTML;
 
-    document.getElementById('selectedSample').innerHTML = `Selected Sample: ${sampleName}, BPM: ${sampleBPM}, Length: ${sampleLength} bars<br>${audioElement}`;
+    document.getElementById('selectedSample').innerHTML = `${sampleName} | BPM: ${sampleBPM} | Length: ${sampleLength} bars<br>${audioElement}`;
     } else {
       document.getElementById('selectedSample').innerText = 'No samples found for the selected category.';
     }
