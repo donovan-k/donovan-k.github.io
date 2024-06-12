@@ -1,19 +1,4 @@
-// Define a function to encapsulate your code
-function initializeLoopingAudio() {
-  // Get references to all audio elements with the class 'looping-audio'
-  const audioElements = document.querySelectorAll('.looping-audio');
 
-  // Loop through each audio element and add event listeners
-  audioElements.forEach(audio => {
-    audio.addEventListener('ended', () => {
-      audio.currentTime = 0;
-      audio.play();
-    });
-  });
-}
-
-// Call the function when the DOM is ready
-document.addEventListener('DOMContentLoaded', initializeLoopingAudio);
 
 function generateSample() {
   // Get the selected category
@@ -41,7 +26,7 @@ function generateSample() {
     const sampleLength = selectedRow.cells[3].innerText;
     const audioElement = selectedRow.cells[4].innerHTML;
 
-    document.getElementById('selectedSample').innerHTML = `${sampleName} | BPM: ${sampleBPM} | Length: ${sampleLength} bars<br>${audioElement}`;
+    document.getElementById('selectedSample').innerHTML = `${sampleName} | BPM: ${sampleBPM} | Length: ${sampleLength} bars<div>${audioElement}</div>`;
     } else {
       document.getElementById('selectedSample').innerText = 'No samples found for the selected category.';
     }
