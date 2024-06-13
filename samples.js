@@ -31,3 +31,24 @@ function generateSample() {
       document.getElementById('selectedSample').innerText = 'No samples found for the selected category.';
     }
 }
+
+function playAudio(button) {
+  var audio = button.parentElement.querySelector('audio');
+  if (audio.paused) {
+    audio.play();
+    button.textContent = 'pause';
+  } else {
+    audio.pause();
+    button.textContent = 'play';
+  }
+}
+
+function downloadAudio(button) {
+  var audioSrc = button.parentElement.querySelector('audio source').src;
+  var link = document.createElement('a');
+  link.href = audioSrc;
+  link.download = audioSrc.substring(audioSrc.lastIndexOf('/') + 1);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}

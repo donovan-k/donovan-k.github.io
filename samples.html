@@ -29,107 +29,174 @@
   <main>
     <h2>INSTRUMENT & LOOP SAMPLES</h2>
 
-    <div class="samplefinder">
-      <label for="categorySelect">Select Category:</label>
-      <select id="categorySelect">
-        <option value="lead">Lead</option>
-        <option value="bass">Bass</option>
-        <option value="drum">Drum</option>
-      </select>
-      <button onclick="generateSample()">Generate</button>
-      <h3 id="selectedSample"></h3>
+    <div>
+      <div class="samplefinder">
+        <label for="categorySelect">Select Category:</label>
+        <select id="categorySelect">
+          <option value="lead">Lead</option>
+          <option value="bass">Bass</option>
+          <option value="drum">Drum</option>
+        </select>
+        <button onclick="generateSample()">Generate</button>
+        <h3 id="selectedSample"></h3>
+      </div>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Category</th>
-          <th>BPM</th>
-          <th>Length (Bars)</th>
-          <th>Audio</th>
-        </tr>
-      </thead>
-      <tbody id="sampleTableBody">
-        <tr>
-          <td>Cave Guitar</td>
-          <td>Lead</td>
-          <td>120</td>
-          <td>16</td>
-          <td>
-            <audio class="looping-audio" controls loop>
-              <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21278&authkey=!ALDuadZhaE2y68E"
-                type="audio/mpeg">
-              Your browser does not support the audio element.
-            </audio>
-          </td>
-        </tr>
-        <tr>
-          <td>Fuffen's Longing</td>
-          <td>Lead</td>
-          <td>120</td>
-          <td>16</td>
-          <td>
-            <audio class="looping-audio" controls loop>
-              <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21279&authkey=!AFBFt1LJWb3_0Bk"
-                type="audio/mpeg">
-              Your browser does not support the audio element.
-            </audio>
-          </td>
-        </tr>
-        <tr>
-          <td>Upright Sub</td>
-          <td>Bass</td>
-          <td>120</td>
-          <td>16</td>
-          <td>
-            <audio class="looping-audio" controls loop>
-              <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21281&authkey=!ABvfI3JwFPJ9pds"
-                type="audio/mpeg">
-              Your browser does not support the audio element.
-            </audio>
-          </td>
-        </tr>
-        <tr>
-          <td>Finger Tap</td>
-          <td>Bass</td>
-          <td>120</td>
-          <td>16</td>
-          <td>
-            <audio class="looping-audio" controls loop>
-              <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21277&authkey=!AGvPo5ZIH4qYMUY"
-                type="audio/mpeg">
-              Your browser does not support the audio element.
-            </audio>
-          </td>
-        </tr>
-        <tr>
-          <td>Soda Pop</td>
-          <td>Bass</td>
-          <td>n/a</td>
-          <td>n/a</td>
-          <td>
-            <audio class="looping-audio" controls loop>
-              <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21276&authkey=!AOSFu1XGo1KOBxU"
-                type="audio/mpeg">
-              Your browser does not support the audio element.
-            </audio>
-          </td>
-        </tr>
-        <tr>
-          <td>Break Drums</td>
-          <td>Drum</td>
-          <td>163</td>
-          <td>8</td>
-          <td>
-            <audio class="looping-audio" controls loop>
-              <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21280&authkey=!AJKpnss2skZyzHs"
-                type="audio/mpeg">
-              Your browser does not support the audio element.
-            </audio>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+    <div class="tablegroup">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>BPM</th>
+            <th>Length (Bars)</th>
+            <th>Audio</th>
+          </tr>
+        </thead>
+        <tbody id="sampleTableBody">
+          <tr>
+            <td>Cave Guitar</td>
+            <td>Lead</td>
+            <td>120</td>
+            <td>16</td>
+            <td>
+              <button onclick="playAudio(this)">play</button>
+              <button onclick="downloadAudio(this)">download</button>
+              <audio class="looping-audio" loop>
+                <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21278&authkey=!ALDuadZhaE2y68E" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td>Fuffen's Longing</td>
+            <td>Lead</td>
+            <td>120</td>
+            <td>16</td>
+            <td>
+              <button onclick="playAudio(this)">play</button>
+              <button onclick="downloadAudio(this)">download</button>
+              <audio class="looping-audio" loop>
+                <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21279&authkey=!AFBFt1LJWb3_0Bk" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td>Upright Sub</td>
+            <td>Bass</td>
+            <td>120</td>
+            <td>16</td>
+            <td>
+              <button onclick="playAudio(this)">play</button>
+              <button onclick="downloadAudio(this)">download</button>
+              <audio class="looping-audio" loop>
+                <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21281&authkey=!ABvfI3JwFPJ9pds" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td>Finger Tap</td>
+            <td>Bass</td>
+            <td>120</td>
+            <td>16</td>
+            <td>
+              <button onclick="playAudio(this)">play</button>
+              <button onclick="downloadAudio(this)">download</button>
+              <audio class="looping-audio" loop>
+                <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21277&authkey=!AGvPo5ZIH4qYMUY" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td>Soda Pop</td>
+            <td>Bass</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>
+              <button onclick="playAudio(this)">play</button>
+              <button onclick="downloadAudio(this)">download</button>
+              <audio class="looping-audio" loop>
+                <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21276&authkey=!AOSFu1XGo1KOBxU" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td>Break Drums</td>
+            <td>Drum</td>
+            <td>163</td>
+            <td>8</td>
+            <td>
+              <button onclick="playAudio(this)">play</button>
+              <button onclick="downloadAudio(this)">download</button>
+              <audio class="looping-audio" loop>
+                <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21280&authkey=!AJKpnss2skZyzHs" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td>Low Tone Feedback</td>
+            <td>Guitar</td>
+            <td>110</td>
+            <td>16</td>
+            <td>
+              <button onclick="playAudio(this)">play</button>
+              <button onclick="downloadAudio(this)">download</button>
+              <audio class="looping-audio" loop>
+                <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21282&authkey=!AEseMKNGu_KqFRA" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td>Soulful House Rock</td>
+            <td>Drums</td>
+            <td>110</td>
+            <td>8</td>
+            <td>
+              <button onclick="playAudio(this)">play</button>
+              <button onclick="downloadAudio(this)">download</button>
+              <audio class="looping-audio" loop>
+                <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21283&authkey=!AE_BU96V4CSBqvA" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td>Melody High Rev</td>
+            <td>Guitar</td>
+            <td>110</td>
+            <td>32</td>
+            <td>
+              <button onclick="playAudio(this)">play</button>
+              <button onclick="downloadAudio(this)">download</button>
+              <audio class="looping-audio" loop>
+                <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21285&authkey=!APoiKIrqnvlfgWY" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </td>
+          </tr>
+          <tr>
+            <td>Shake In n Out</td>
+            <td>Bass</td>
+            <td>110</td>
+            <td>32</td>
+            <td>
+              <button onclick="playAudio(this)">play</button>
+              <button onclick="downloadAudio(this)">download</button>
+              <audio class="looping-audio" loop>
+                <source src="https://onedrive.live.com/download?resid=B380E79D4EB0DE71%21284&authkey=!ABV40Fda0w8tgOY" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <script src="samples.js"></script>
   </main>
   <footer>
