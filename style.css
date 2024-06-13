@@ -107,7 +107,7 @@ nav a:hover {
   display: none;
 }
 
-#menu-toggle:checked + .menu-icon + #nav-list {
+#menu-toggle:checked+.menu-icon+#nav-list {
   display: flex;
 }
 
@@ -189,7 +189,8 @@ table {
   margin: 20px auto;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #004d00;
   padding: 8px;
   text-align: center;
@@ -206,61 +207,65 @@ th {
 
 
 .samplefinder {
-    width: auto;
-    background-color: #1a1a1a;
-    border: 2px solid #4a4a4a;
-    border-radius: 10px;
-    padding: 20px;
-    color: #00ff00;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 20px auto;
+  width: auto;
+  background-color: #1a1a1a;
+  border: 2px solid #4a4a4a;
+  border-radius: 10px;
+  padding: 20px;
+  color: #00ff00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
 }
 
-.samplefinder label, 
-.samplefinder select, 
-.samplefinder button, 
+.samplefinder label,
+.samplefinder select,
+.samplefinder button,
 .samplefinder h3 {
-    margin: 10px;
-    font-size: 16px;
+  margin: 10px;
+  font-size: 16px;
 }
 
-.samplefinder select, 
+.samplefinder select,
 .samplefinder button {
-    background-color: #004d00;
-    color: #00ff00;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
+  background-color: #004d00;
+  color: #00ff00;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.samplefinder select:focus, 
+.samplefinder img {
+  width: 250px;
+}
+
+.samplefinder select:focus,
 .samplefinder button:focus {
-    outline: none;
-    box-shadow: 0 0 5px #00ff00;
+  outline: none;
+  box-shadow: 0 0 5px #00ff00;
 }
 
 .samplefinder button:hover {
-    background-color: #005500;
+  background-color: #005500;
 }
 
 .looping-audio {
-    display: block;
-    margin: 20px auto;
-    width: 150px;
-    background-color: #1a1a1a;
-    border: 2px solid #00ff00;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+  display: block;
+  margin: 20px auto;
+  width: 150px;
+  background-color: #1a1a1a;
+  border: 2px solid #00ff00;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
 }
 
 .looping-audio::-webkit-media-controls-panel {
-    background-color: #1a1a1a;
-    color: #00ff00;
-    border-radius: 5px;
+  background-color: #1a1a1a;
+  color: #00ff00;
+  border-radius: 5px;
 }
 
 .looping-audio::-webkit-media-controls-play-button,
@@ -271,8 +276,8 @@ th {
 .looping-audio::-webkit-media-controls-mute-button,
 .looping-audio::-webkit-media-controls-seek-back-button,
 .looping-audio::-webkit-media-controls-seek-forward-button {
-    filter: invert(100%);
-    color: #00ff00;
+  filter: invert(100%);
+  color: #00ff00;
 }
 
 /* Hide unwanted elements for a slim style */
@@ -280,7 +285,7 @@ th {
 .looping-audio::-webkit-media-controls-fullscreen-button,
 .looping-audio::-webkit-media-controls-rewind-button,
 .looping-audio::-webkit-media-controls-return-to-realtime-button {
-    display: none;
+  display: none;
 }
 
 button {
